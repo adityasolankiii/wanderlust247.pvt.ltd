@@ -26,11 +26,11 @@ _bash: git clone https://github.com/adityasolankiii/wanderlust247.pvt.ltd.git_
 _Get : npm install_
 
 **Set your env variable**<br/>
-[Cloudinary]: CLOUD*NAME <br/>
+[Cloudinary]: CLOUD_NAME <br/>
 [Cloudinary]: CLOUD_API_KEY <br/>
 [Cloudinary]: CLOUD_API_SECRET <br/>
 [Map_Box]: MAP_TOKEN <br/>
 [Razerpay]: RAZORPAY_ID_KEY <br/>
 [Razerpay]: RAZORPAY_SECRET_KEY <br/>
 [your secret key]: SECRET <br/>
-[Mongo Atlas]: ATLASDB_URL | *optional\* (you can use local connection url)<br/>
+[Mongo Atlas]: ATLASDB_URL | \*optional\* (you can use local connection url)<br/>
