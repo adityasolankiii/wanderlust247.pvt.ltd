@@ -32,5 +32,5 @@ _Get : npm install_
 [Map_Box]: MAP_TOKEN <br/>
 [Razerpay]: RAZORPAY_ID_KEY <br/>
 [Razerpay]: RAZORPAY_SECRET_KEY <br/>
-[your secret kry]: SECRET <br/>
+[your secret key]: SECRET <br/>
 [Mongo Atlas]: ATLASDB_URL | *optional\* (you can use local connection url)<br/>
