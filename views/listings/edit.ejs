@@ -1,0 +1,119 @@
+<%layout("/layouts/boilerplate.ejs")%>
+<div class="row mt-3">
+  <div class="col-lg-8 col-md-12 col-sm-12 offset-lg-2">
+    <h3>Edit your Listing</h3>
+    <form
+      action="/listings/<%=listing._id%>?_method=PUT"
+      method="post"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          name="listing[title]"
+          value="<%=listing.title%>"
+          class="form-control"
+          id="title"
+          required />
+        <div class="valid-feedback">looks good!</div>
+        <div class="invalid-feedback">Title should be valid</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          name="listing[description]"
+          rows="2"
+          class="form-control"
+          id="description"
+          required>
+        <%=listing.description%>
+      </textarea
+        >
+        <div class="valid-feedback">looks good!</div>
+        <div class="invalid-feedback">Please enter a short description!</div>
+      </div>
+
+      <div class="mb-3">
+        Original Listing Image <br />
+        <img src="<%= originalImageUrl %>" style="height: 100px; width: 150px;"/>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload New Image</label>
+        <input
+          type="file"
+          name="listing[image]"
+          class="form-control"
+          id="image" />
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-6">
+          <label for="location" class="form-label">Location</label>
+          <input
+            type="text"
+            placeholder="Jaipur,Rajasthan"
+            name="listing[location]"
+            class="form-control"
+            value="<%=listing.location%>"
+            required />
+          <div class="valid-feedback">looks good!</div>
+          <div class="invalid-feedback">Please enter valid Location</div>
+        </div>
+        <div class="mb-3 col-md-6">
+          <label for="country" class="form-label">Country</label>
+          <input
+            type="text"
+            name="listing[country]"
+            placeholder="India"
+            class="form-control"
+            value="<%= listing.country %>"
+            required />
+          <div class="valid-feedback">looks good!</div>
+          <div class="invalid-feedback">Please enter valid Country!</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-6">
+          <label for="price" class="form-label">Price</label>
+          <input
+            name="listing[price]"
+            placeholder="1200"
+            class="form-control"
+            value="<%= listing.price %>"
+            required />
+          <div class="valid-feedback">looks good!</div>
+          <div class="invalid-feedback">Please enter valid Price!</div>
+        </div>
+        <div class="mb-3 col-md-6">
+          <label for="category" class="form-label">Category</label>
+          <select
+            name="listing[category]"
+            id="category"
+            class="form-control"
+            required>
+            <option value="Rooms" <%if(listing.category == "Rooms"){%>selected<%}%>>Rooms</option>
+            <option value="Villa" <%if(listing.category == "Villa"){%>selected<%}%>>Villa</option>
+            <option value="Iconic Cities" <%if(listing.category == "Iconic Cities"){%>selected<%}%>>Iconic Cities</option>
+            <option value="Mountains" <%if(listing.category == "Mountains"){%>selected<%}%>>Mountains</option>
+            <option value="Castles" <%if(listing.category == "Castles"){%>selected<%}%>>Castles</option>
+            <option value="Amazing Pools" <%if(listing.category == "Amazing Pools"){%>selected<%}%>>Amazing Pools</option>
+            <option value="Camping" <%if(listing.category == "Camping"){%>selected<%}%>>Camping</option>
+            <option value="Farms" <%if(listing.category == "Farms"){%>selected<%}%>>Farms</option>
+            <option value="Arctic" <%if(listing.category == "Arctic"){%>selected<%}%>>Arctic</option>
+            <option value="Dome" <%if(listing.category == "Dome"){%>selected<%}%>>Dome</option>
+          </select>
+          <div class="valid-feedback">looks good!</div>
+          <div class="invalid-feedback">Please Select valid Category!</div>
+        </div>
+      </div>
+      <button class="btn btn-dark edit-btn mt-3 mb-4 col-lg-2 col-md-2 col-3">
+        Edit
+      </button>
+    </form>
+  </div>
+</div>

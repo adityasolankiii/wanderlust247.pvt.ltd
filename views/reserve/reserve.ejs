@@ -1,0 +1,94 @@
+<%layout("/layouts/boilerplate")%>
+
+  <form action="/listings/<%= listing._id %>/reserve" method="POST" novalidate class="needs-validation reserve-form">
+    <div class="row mt-3">
+      <div class="col-9 offset-lg-2 offset-md-2 offset-1">
+
+
+        <div class="row">
+          <div class="mb-3 col-md-6">
+            <label for="mobile" class="form-label">Mobile Number</label>
+            <input type="number" id="mobile" name="reserve[mobile]" placeholder="+91 xxxx xxx xxx" class="form-control"
+              required />
+            <div class="valid-feedback">Looks Good!</div>
+            <div class="invalid-feedback">Please enter valid Mobile Number</div>
+          </div>
+
+          <div class="mb-3 col-md-6">
+            <label for="identity" class="form-label">Identity Number</label>
+            <input type="text" id="identity" name="reserve[identity]" placeholder="Passport/ Aadhar Number/ Election id"
+              class="form-control" required />
+            <div class="valid-feedback">Looks Good!</div>
+            <div class="invalid-feedback">Please enter valid Identity Number</div>
+          </div>
+          
+        </div>
+
+
+        <div class="row">
+          <div class="mb-3 col-md-6">
+            <label for="checkin" class="form-label">Check-IN Date</label>
+            <input type="date" name="reserve[checkin]" id="checkin" class="form-control" required>
+            <div class="valid-feedback">Looks Good!</div>
+            <div class="invalid-feedback">Please select Check-IN Date</div>
+          </div>
+
+          <div class="mb-3 col-md-6">
+            <label for="checkout" class="form-label">Check-OUT Date</label>
+            <input type="date" name="reserve[checkout]" id="checkout" class="form-control" required>
+            <div class="valid-feedback">Looks Good!</div>
+            <div class="invalid-feedback">Please select Check-Out Date</div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+          <div class="row row-cols-lg-2 row-cols-2">
+            <div class="mb-3">
+              <label for="adult" class="form-label">Adults</label>
+              <div class="input-group" style="width: 105px;">
+                <button class="btn border" type="button" id="decAdult">-</button>
+                <input type="text" name="reserve[adult]" id="adult" class="form-control" value="1" readonly>
+                <button class="btn border" type="button" id="incAdult">+</button>
+              </div>
+              <div class="valid-feedback">Looks Good!</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="child" class="form-label">Children</label>
+              <div class="input-group" style="width: 105px;">
+                <button class="btn border" type="button" id="decChild">-</button>
+                <input type="text" id="children" name="reserve[children]" class="form-control" value="0" readonly>
+                <button class="btn border" type="button" id="incChild">+</button>
+              </div>
+              <div class="valid-feedback">Looks Good!</div>
+            </div>
+          </div>
+          </div>
+          <div class="mb-3 col-md-6 mt-4">
+            <input type="hidden" name="reserve[total]" id="hidden">
+            <b>&#8377;<span id="totalPrice">0</span></b>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-md-6">
+            <button class="btn btn-dark add-btn mt-3 mb-4 col-12">Confirm Booking</button>
+          </div>
+
+          <div class="mb-3 col-md-6">
+            <a href="/listings/<%=listing._id%>" class="btn btn-outline-secondary rounded-2 mt-3 mb-4 col-12">Go
+              Back</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </div>
+    </div>
+  </form>
+  <script src="/js/validations.js"></script>
+  <script>
+    // Inline script to initialize JavaScript variables
+    let pricePerNight = <%= JSON.stringify(listing.price) %>; // Assuming listing.price is available
+  </script>

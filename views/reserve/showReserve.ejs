@@ -1,0 +1,70 @@
+<%layout("/layouts/boilerplate")%>
+
+  <div class="container col-lg-8 mt-4" style="width: 850px;">
+    <div class="row">
+       <div class="card mb-4 border-0 shadow">
+           <div class="row g-0 p-lg-2">
+               <div class="col-md-5 align-self-center div-img">
+                   <img src="<%= listing.image.url %>" class="img-fluid rounded">
+               </div>
+                   <div class="col-lg-4 col-md-5 px-lg-3 px-md-4 px-0 ">
+                       <div class="mt-md-3 mb-1 col-md-12 mt-lg-4">
+                           <h4 class="text-sm-start"><%= listing.title %></h4>
+                       </div>
+                    
+
+                       <div class="mb-1">
+                           <h6 class="d-inline">Guest Name : </h6>
+                           <span class="text-dark fs-6">
+                            <b><%= currUser.username %></b>
+                           </span>
+                       </div>
+                       <div class="mb-1">
+                           <h6 class="d-inline">Total : </h6>
+                           <span class="text-dark fs-6">
+                            <%= reserveDetail.total %></p>
+                           </span>
+                       </div>
+                       <div class="mb-1">
+                           <h6 class="d-inline">Mobile : </h6>
+                           <span class="text-dark fs-6">
+                            <%= reserveDetail.mobile %></p>
+                           </span>
+                       </div>
+                       <div class="mb-1">
+                           <h6 class="mb-1 d-inline">Adults : </h6>
+                           <span class="text-dark fs-6">
+                            <b><%= reserveDetail.adult %></b>
+                           </span>                            
+                       </div>
+                       <div class="mb-1">
+                        <h6 class="mb-1 d-inline">Childrens : </h6>
+                        <span class="text-dark fs-6">
+                         <b><%= reserveDetail.children %></b>
+                        </span>                            
+                    </div>                              
+                   </div>
+
+                   <div class="col-md-2 mt-4 py-lg-5 py-md-5 col-lg-3 align-self-center">
+                       <div class="mb-1">
+                           <h6 class="mb-0 d-lg-inline">Check-in : </h6>
+                           <span class="text-dark fs-6">
+                            <%= reserveDetail.checkin.toString().split(" ").slice(1,4).join("-") %>
+                           </span>
+                       </div>
+                       <div class="mb-1">
+                           <h6 class="mb-0 d-lg-inline">Check-out : </h6>
+                           <span class="text-dark fs-6">
+                            <%= reserveDetail.checkout.toString().split(" ").slice(1,4).join("-") %>
+                           </span>
+                       </div>
+
+                       <br>
+                       <a href="/listings" class="btn btn-sm btn-dark rounded-2 fw-bold shadow-none">Home</a>
+                   </div>
+      
+                </div>
+
+       </div>
+   </div>
+</div>

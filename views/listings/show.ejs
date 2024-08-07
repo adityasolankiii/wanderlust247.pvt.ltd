@@ -1,0 +1,85 @@
+<%layout("/layouts/boilerplate")%>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const mapToken = "<%=process.env.MAP_TOKEN%>";
+    const listing = <%-JSON.stringify(listing)%>;
+  </script>
+
+  <div class="row mt-3">
+    <div class="col-12 offset-lg-3">
+      <h3>
+        <%=listing.title%>
+      </h3>
+    </div>
+    <div class="card col-lg-6 offset-lg-3 show-card listing-card">
+      <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="Listing-image" />
+      <div class="card-body">
+        <p class="card-text">Owned by <i>
+            <%=listing.owner.username%>
+          </i></p>
+        <p class="card-text">
+          <%=listing.description%>
+        </p>
+        <p class="card-text">&#8377;<%=listing.price.toLocaleString("en-IN")%></p>
+        <p class="card-text">
+          <%=listing.location%>
+        </p>
+        <p class="card-text">
+          <%=listing.country%>
+        </p>
+        </p>
+      </div>
+    </div>
+    <br />
+
+    <div class="row mb-3">
+
+      <div class="col-4 offset-lg-3">
+        <div class="btns align-items-center">
+          <a href="/listings/<%=listing._id%>/edit" class="btn btn-dark edit-btn w-lg-50">Edit</a>
+          <form action="/listings/<%=listing._id%>?_method=DELETE" method="post">
+            <button type="submit" class="btn btn-dark offset-5">Delete</button>
+          </form>
+          <div class="form-check form-switch mx-5">
+            <input class="form-check-input" type="checkbox" role="switch" id="reserved" <%if(listing.isReserved==true){%>checked<%}%>>
+              <label class="form-check-label" for="reserved"><b>Reserved</b></label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Leave a Review -->
+    <div class="col-lg-8 col-12 offset-lg-3 mb-3">
+      <hr />
+
+      <%if(listing.reviews.length>0){%>
+        <div class="row">
+          <p><b>All Reviews</b></p>
+          <% for(review of listing.reviews){%>
+            <div class="card col-lg-4 col-md-5 col-11 mb-3 mx-3">
+              <div class="card-body my-3">
+                <h5 class="card-title">@<%=review.author.username%>
+                </h5>
+                <p class="card-text">
+                  <%=review.comment%>
+                </p>
+                <p class="starability-result card-text" data-rating="<%=review.rating%>"></p>
+              </div>
+            </div>
+            <%}%>
+        </div>
+        <%}%>
+
+    </div>
+    <div class="col-lg-6 col-12 offset-lg-3 mb-3">
+      <h3>Your Property Location</h3>
+      <div id="map" class="w-100"></div>
+    </div>
+  </div>
+  <script>
+    const checkbox = document.getElementById("reserved");
+    checkbox.addEventListener("change", async () => {
+      await axios.put("/listings/<%= listing._id%>/free", { isReserved: checkbox.checked });
+    });
+  </script>
+  <script src="/js/map.js"></script>
