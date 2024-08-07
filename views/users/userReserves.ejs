@@ -222,8 +222,8 @@
                                 const razorpayObject = new Razorpay(options);
                                 razorpayObject.on('payment.failed', function (response) {
                                     let resData = { ...response }
-                                    axios.post(`/user/<%=currUser._id%>/reserves/${reserveId}/payment/validateFailure`, resData);
                                     alert("Payment Failed");
+                                    axios.post(`/user/<%=currUser._id%>/reserves/${reserveId}/payment/validateFailure`, resData);                                    
                                 });
                                 razorpayObject.open();
                             }

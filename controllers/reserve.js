@@ -8,7 +8,7 @@ module.exports.renderReserveForm = async (req, res) => {
   const listing = await Listing.findById(id);
   if (!listing) {
     req.flash("error", "Listing you requested for dose not exist");
-    res.redirect("/listing");
+    res.redirect("/listings");
   }
   res.render("reserve/reserve.ejs", { listing });
 };
@@ -36,5 +36,5 @@ module.exports.addReserve = async (req, res) => {
     );
   }
   req.flash("success", "Booking Confirm!");
-  res.redirect("/listing");
+  res.redirect(`/user/${req.user.id}/reserves`);
 };
