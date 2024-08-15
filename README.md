@@ -1,4 +1,4 @@
-# CoralCove
+# WanderLust
 
 _Wanderlust is a home-sharing platform that connects hosts with travelers looking for unique accommodations around the world. Whether you’re seeking a cozy apartment in the city or a serene beach house, Wanderlust makes it easy to find and book the perfect place for your stay._
 
