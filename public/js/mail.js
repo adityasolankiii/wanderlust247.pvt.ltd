@@ -4,7 +4,7 @@ module.exports.sendReserveMail = (to, username, Checkin, Checkout, total) => {
     service: "gmail",
     auth: {
       user: "wanderlust247.pvt.ltd@gmail.com",
-      pass: "efby zljl hdsa szyt",
+      pass: process.env.GOOGLE_MAIL_APP_PASS,
     },
   });
   let maildetail = {
@@ -44,7 +44,7 @@ wanderlust247.pvt.ltd@gmail.com`,
   });
 };
 
-//When Booking Are cancle then this mail is send
+//When user cancelled booked property then this mail will send
 
 module.exports.sendCancellationMail = (to, username) => {
   let mailer = nodemailer.createTransport({
